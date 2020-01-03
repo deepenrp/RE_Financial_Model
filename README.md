@@ -26,10 +26,10 @@ Note:- Certain aspects of the model are included in Excel and not in the webapp.
 Deployed on Heroku:-  https://re-financial-model.herokuapp.com/
 
 
-###### This repository is a work in progress and is in constant improvement.
+#### This repository is a work in progress and is in constant improvement.
 
 
-All information provided in this repository is for informational and educational purposes only, and in no way is any of the content contained herein to be construed as financial, investment, or legal advice or instruction. This repository does not guarantee the quality, accuracy, completeness or timelines of the information in this publication. While efforts are made to verify the information provided, the information should not be assumed to be error free. Some information in the publication may have been provided by third parties and has not necessarily been verified by the creator of this website. The creator of this website does not assume any liability for the information contained herein, be it direct, indirect, consequential, special, or exemplary, or other damages whatsoever and howsoever caused, arising out of or in connection with the use of this publication or in reliance on the information, including any personal or pecuniary loss, whether the action is in contract, tort (including negligence) or other tortious action.
+_{All information provided in this repository is for informational and educational purposes only, and in no way is any of the content contained herein to be construed as financial, investment, or legal advice or instruction. This repository does not guarantee the quality, accuracy, completeness or timelines of the information in this publication. While efforts are made to verify the information provided, the information should not be assumed to be error free. Some information in the publication may have been provided by third parties and has not necessarily been verified by the creator of this website. The creator of this website does not assume any liability for the information contained herein, be it direct, indirect, consequential, special, or exemplary, or other damages whatsoever and howsoever caused, arising out of or in connection with the use of this publication or in reliance on the information, including any personal or pecuniary loss, whether the action is in contract, tort (including negligence) or other tortious action.}
 
 
 
