@@ -9,7 +9,7 @@ As a mortgage loan originator, it is my responsibility to help home buyers under
 
 There are paid services that help home buyers understand wealth creation while utilizing a mortgage. After speaking to many home buyers, there was still a lack of access to this knowledge. I even had someone tell me that he wished his mortgage lender showed him this when he was getting a mortgage.
 
-At that time, the various calculations I was doing were all done in Excel. I needed to put this on the web so that anyone with internet can have access to it. A preview of the Excel workbook is included in this repository.  
+At that time, the various calculations I was doing were all done in Excel. I needed to put this on the web so that anyone with internet can have access to it. A preview of the Excel workbook is included in this repository. The webapp launched on Heroku is an easier way to understand wealth creation through home ownership. 
 
 ## 3 Ways
 When we think about how we are creating wealth through real estate, there are 3 ways that work together simultaneously:
