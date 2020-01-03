@@ -29,7 +29,7 @@ property_tax_monthly = round((property_taxes / 12), 2)
 property_tax_rate = property_taxes / purchase_price
 homeowners_insurance_annual = 900
 homeowners_insurance_monthly = homeowners_insurance_annual / 12
-purchase_date = datetime.strptime("2019-03-29", "%Y-%m-%d")
+purchase_date = datetime.strptime("2020-01-01", "%Y-%m-%d")
 month_start = datetime(purchase_date.year, purchase_date.month + 2, 1)
 
 # Loan Details (Input Loan Type, LTV, Interest Rate, Term, Additional Principal)
@@ -101,9 +101,9 @@ amortization_schedule_df["month"] = list(range(1, (len(amortization_schedule_df[
 #Year
 periods = list(range(1, (len(amortization_schedule_df["payment_date"]) + 1)))
 year = []
-for x in periods: 
-    year.append(math.ceil( x / 12 ))    
-# Year Column 
+for x in periods:
+    year.append(math.ceil( x / 12 ))
+# Year Column
 amortization_schedule_df["year"] = year
 
 # Payment, Principal, Interest
@@ -141,11 +141,11 @@ equity_df["payment"] = amortization_schedule_df["payment"]
 
 house_value = []
 value = purchase_price
-for row, index in equity_df.iterrows():    
+for row, index in equity_df.iterrows():
     value = round((value * (1 + ((appreciation_rate/100) / 12))), 2)
     house_value.append(value)
     value = value
-    
+
 equity_df["home_value"] = house_value
 equity_df["home_equity_without_appreciation"] = purchase_price - equity_df["ending_balance"]
 equity_df["home_equity_minus_downpayment_closing_costs"] = equity_df["home_equity_without_appreciation"] - downpayment - going_in_costs
@@ -170,11 +170,11 @@ cashflow_df["monthly_housing_expense_owning"] = -cashflow_df["payment"] + cashfl
 # Calculation for Total Owning Costs
 monthly_cost = 0
 total_costs = []
-for cost in cashflow_df["monthly_housing_expense_owning"]:        
+for cost in cashflow_df["monthly_housing_expense_owning"]:
     monthly_cost += cost
     total_costs.append(round((cash_to_close + monthly_cost), 2))
-cashflow_df["total_owning_cost"] = total_costs   
-    
+cashflow_df["total_owning_cost"] = total_costs
+
 cashflow_df["monthly_rent"] = current_housing_payment
 # ^^^  Need Monthly Rent Growth Calculations
 
@@ -182,7 +182,7 @@ cashflow_df["monthly_rent"] = current_housing_payment
 monthly_rent = 0
 total_rent = []
 for rent in cashflow_df["monthly_rent"]:
-    monthly_rent += rent 
+    monthly_rent += rent
     total_rent.append(round(monthly_rent, 2))
 
 cashflow_df["total_renting_cost"] = total_rent
@@ -191,7 +191,7 @@ cashflow_df["monthly_saving_expense"] = np.around(cashflow_df["monthly_rent"], d
 # Calculation for Total Cash Flow
 saved_spent = 0
 total_saved_spent = []
-for cash_flow in cashflow_df["monthly_saving_expense"]:    
+for cash_flow in cashflow_df["monthly_saving_expense"]:
     saved_spent += cash_flow
     total_saved_spent.append(round(saved_spent, 2))
 
@@ -228,7 +228,7 @@ rate_of_return_df["present_value_benefit_of_owning_vs_renting"] = round((rate_of
     (np.power((1 + inflation ), (1/12)))), 2)
 rate_of_return_df["percent_return_inflation_adjusted"] = round(((rate_of_return_df["present_value_benefit_of_owning_vs_renting"] / cash_to_close) * 100), 2)
 
-# Calculation for = Annualized Rate of Return 
+# Calculation for = Annualized Rate of Return
 periods = list(range(1, (len(rate_of_return_df["percent_return_inflation_adjusted"]) + 1)))
 rate_of_return_df["annualized_rate_of_return_inflation_adjusted"] = round(((rate_of_return_df["percent_return_inflation_adjusted"] / (periods)) * 12), 2)
 
@@ -261,7 +261,7 @@ ten = list(range(1, 10 +1))
 month = []
 for x in ten:
      month.append(x * 12)
-        
+
 year = []
 home_appreciation = []
 equity_from_appreciation = []
@@ -270,7 +270,7 @@ percent_roi = []
 annualized_roi = []
 total_owning_cost = []
 total_renting_cost = []
-        
+
 for x in month:
     year.append(ten_years_df["year"].loc[x - 1])
     home_appreciation.append(ten_years_df["home_appreciation"].loc[x - 1])
@@ -288,7 +288,7 @@ yearly_df["equity_from_appreciation"] = equity_from_appreciation
 yearly_df["wealth_created"] = wealth_created
 yearly_df["percent_return_inflation_adjusted"] = percent_roi
 yearly_df["annualized_rate_of_return_inflation_adjusted"] = annualized_roi
-yearly_df["total_owning_cost"] = total_owning_cost       
+yearly_df["total_owning_cost"] = total_owning_cost
 yearly_df["total_renting_cost"] = total_renting_cost
 
 
@@ -303,7 +303,7 @@ def index():
 # Create Routes that renders templates:
 
 @app.route("/schedule_plotly")
-def schedule_p():    
+def schedule_p():
     schedule_plotly = amortization_schedule_df.to_dict(orient="list")
     return jsonify(schedule_plotly)
 

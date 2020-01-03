@@ -28,37 +28,40 @@ function amortizationSchedule() {
   var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-
+  // Define data for amortization schedule
   var schedule_url = "/schedule_d3";
 
-  
-
+  // Import data from amortization schedule data
   d3.json(schedule_url).then(function(scheduleData){
 
     // console.log(scheduleData);
+
+    // Create function to parse date and time
     var parseTime = d3.timeParse("%Y-%m-%d");
 
-    // Format the date and cast the force value to a number
+    // Format the data
     scheduleData.forEach(function(data) {
-      console.log(data);
       data.payment_date = parseTime(data.payment_date);
       data.ending_balance = +data.ending_balance;
-      data.cumulative_interest = +data.cumulative_interest;
+      data.cumulative_interest = +(data.cumulative_interest * -1);
+      console.log(data);
     });
 
 
-    // d3.extent returns the an array containing the min and max values for the property specified
+    // Create the scales for the chart
+    // x-axis
     var xTimeScale = d3.scaleTime()
       .domain(d3.extent(scheduleData, data => data.payment_date))
       .range([0, chartWidth]);
-
-    // Configure a linear scale with a range between the chartHeight and 0
+    // y-axis
     var yLinearScale = d3.scaleLinear()
       .range([chartHeight, 0]);
 
-    var ending_balance_max = d3.max(scheduleData, data => data.ending_balance);
-
-    var cumulative_interest_max = d3.max(scheduleData, data => data.cumulative_interest);
+    // Set up the y-axis domain
+    // find the max ending balance
+    var ending_balance_max = d3.max(scheduleData, d => d.ending_balance);
+    // find the max cumulative interest data
+    var cumulative_interest_max = d3.max(scheduleData, d => d.cumulative_interest);
 
     var yMax;
     if (ending_balance_max > cumulative_interest_max) {
@@ -68,8 +71,10 @@ function amortizationSchedule() {
       yMax = cumulative_interest_max;
     }
 
+    // Use the yMax value to set the yLinearScale domain
     yLinearScale.domain([0, yMax]);
 
+    // Create the axes
     var bottomAxis = d3.axisBottom(xTimeScale).tickFormat(d3.timeFormat("%Y-%m-%d"));
     var leftAxis = d3.axisLeft(yLinearScale);
 
@@ -84,29 +89,29 @@ function amortizationSchedule() {
 
     // Line generator for ending balance data
     var line1 = d3.line()
-      .x(data => xTimeScale(data.payment_date))
-      .y(data => yLinearScale(data.ending_balance));
+      .x(d => xTimeScale(d.payment_date))
+      .y(d => yLinearScale(d.ending_balance));
 
     // Line generator for cumulative interest data
     var line2 = d3.line()
-      .x(data => xTimeScale(data.payment_date))
-      .y(data => yLinearScale(data.cumulative_interest));
+      .x(d => xTimeScale(d.payment_date))
+      .y(d => yLinearScale(d.cumulative_interest));
 
 
     // Append a path for line1
     chartGroup
       .append("path")
-      .attr("data", line1(scheduleData))
+      .attr("d", line1(scheduleData))
       .classed("line green", true);
 
     // Append a path for line2
     chartGroup
       .data([scheduleData])
       .append("path")
-      .attr("data", line2)
+      .attr("d", line2)
       .classed("line orange", true);
 
-
+    // Create Legends
 
 
   }).catch(function(error) {
@@ -116,6 +121,3 @@ function amortizationSchedule() {
 }
 
 amortizationSchedule();
-
-
-
