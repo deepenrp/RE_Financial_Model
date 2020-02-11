@@ -36,68 +36,70 @@
 
     <div class="row">
 
-    <!-- Form Grid -->
-
-    <form class="col-md-10 offset-1" method="POST" action="/send" role="form", name="petform">
-
-      <p><b>To view the charts on the page for a scenario, please fill out the form below and click on "Submit".</b></p>
-
-      <!-- <div class="form-row">
-        <div class="form-group col-md-8">
-          <label for="inputEmail4">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-        </div>
-        <div class="form-group col-md-8">
-          <label for="inputPassword4">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-        </div>
-      </div> -->
-
-      <div class="form-row">
-            <div class="form-group col-md-6">
-                  <label for="house-price">Purchase Price ($)</label>
-                  <input type="number" class="form-control" id="inputPrice" name="purchasePrice" placeholder="100000">      
-            </div>
-            <div class="form-group col-md-6">
-                  <label for="downpayment">Downpayment (%)</label>
-                  <input type="number" class="form-control" id="inputDownpayment" name="downpayment" placeholder="20">
-            </div>
-      </div>
-      <div class="form-row">
-            <div class="form-group col-md-6">
-                  <label for="term">Term (Years)</label>
-                  <input type="number" class="form-control" id="inputTerm" name="term" placeholder="30">
-            </div>
-            <div class="form-group col-md-6">
-                  <label for="interest">Interest Rate (%)</label>
-                  <input type="number" step="0.125" class="form-control" id="inputInterest" name="interestRate" placeholder="3.75">
-            </div>
-      </div>        
-      <div class="form-row">
-            <!-- <div class="form-group col-md-4">
-                  <label for="inputState">State</label>
-                  <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-            </div>
-            <div class="form-group col-md-4">
-                  <label for="inputZip">Zip Code</label>
-                  <input type="number" class="form-control" id="inputZip" placeholder="08648">
-            </div> -->
-      
-
-          <button type="submit" class="col-md-2 offset-1 btn btn-primary">Submit</button>
-
+      <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">CATEGORY</th>
+                <th scope="col">VALUE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">NJ Average Sales Price (NJ Division of Taxation):-</th>
+                <td>$ 412,284</td>
+              </tr>
+              <tr>
+                <th scope="row">Loan Amount (80% LTV) :-</th>
+                <td>$ 329,827</td>
+              </tr>
+              <tr>
+                <th scope="row">Term :-</th>
+                <td>30 Years</td>
+              </tr>
+              <tr>
+                <th scope="row">Interest Rate :-</th>
+                <td>3.75 %</td>
+              </tr>
+              <tr>
+                <th scope="row">Appreciation Rate (According to past 5-Yr NJ FHFA HPI):-</th>
+                <td>3.425 %</td>
+              </tr>
+            </tbody>
+        </table>
       </div>
 
-    </br>
 
-    </form>
-    <!-- Form Grid -->
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">CATEGORY</th>
+              <th scope="col">VALUE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Estimated Property Taxes (2.5% of Value):-</th>
+              <td>$ 10,307 per Year</td>
+            </tr>
+            <tr>
+              <th scope="row">Estimated Homeowners Insurance :-</th>
+              <td>$ 900 per Year</td>
+            </tr>
+            <tr>
+              <th scope="row">Estimated "Going In Costs" (Closing Costs minus Prepaids & Escrows):-</th>
+              <td>$ 10,000</td>
+            </tr>
+            <tr>
+              <th scope="row">Equivalent Rent :-</th>
+              <td>$ 2,200</td>
+            </tr>
+          </tbody>
+      </table>
+      </div>
 
-  </div>
-
+    </div>
   <hr>
   </br>
 
@@ -172,21 +174,13 @@
           </div>
           <div class="col-md-6" id="wealth"></div>
     </div>
-
-  <hr>
-      <h6><strong><u>Assumptions</u></strong></h6>
-      <p>There are some assumptions made to factor into the model:</p>
-      <ul>- Property taxes are estimated at <b>2%</b> of property value</ul>
-      <ul>- Homeowners Insurance is estimated at <b>$900 per year</b></ul>
-      <ul>- Estimated "Going In Costs" (Closing Costs minus Prepaids & Escrows) are <b>$10,000</b></ul>
-      <ul>- Equivalent Rent is estimated at <b>$2,200</b></ul>
-      <ul>- Mortgage Insurance for downpayments of less than 20% is not included in this analysis. <i><b>{Coming Soon}</b></i></ul>
-      <ul>- Annual inflation is also estimated at <b>2%</b></ul>
-      <p>Please keep in mind that some of these estimates may be overestimated or underestimated as it 
-        depends on the location of the property. Refer to a local professional to get more accurate estimates.</p>
   <hr>
 
+<div id="footer">
+  <p>Deepen Patel &copy; 2019</p>
+</div>
 
+<hr>
 
     <div class="row">
           <div class="col-md-10 offset-1">
@@ -203,13 +197,6 @@
     </div>
 
 <hr>
-
-<div class="col-md-8 offset-8" id="footer">
-    <p>Deepen Patel &copy; 2020</p>
-</div>
-
-<hr>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
