@@ -1,5 +1,5 @@
 
-var schedule_url = "/schedule_plotly";
+var schedule_url = "/schedule";
 
 function amortizationSchedule() {
   
@@ -10,10 +10,10 @@ function amortizationSchedule() {
     var ending_balance = data.ending_balance;
     var cumulative_principal = data.cumulative_principal.map(function(x) { return x * -1; });
     var cumulative_interest = data.cumulative_interest.map(function(x) { return x * -1; });
-    // console.log(payment_date);
-    // console.log(cumulative_interest);
-    // console.log(cumulative_principal);
-    // console.log(ending_balance);
+    console.log(payment_date);
+    console.log(cumulative_interest);
+    console.log(cumulative_principal);
+    console.log(ending_balance);
 
     var trace1 = {
         x: payment_date,
@@ -69,7 +69,7 @@ function amortizationSchedule() {
 // ------------------------------------------------------------------------------------------
 
 
-var equity_url = "/equity_plotly";
+var equity_url = "/equity";
 
 function equityChart() {
 
@@ -115,9 +115,9 @@ function equityChart() {
 
 // ------------------------------------------------------------------------------------------
 
-var ten_year_url = "/ten_years_plotly";
+var ten_year_url = "/yearly";
 
-function tenYearChart() {
+function yearlyChart() {
 
   d3.json(ten_year_url).then(function(data){
 
@@ -131,7 +131,7 @@ function tenYearChart() {
       y: wealth_created,
       type: 'bar',
       marker: {
-        color: 'green'
+        color: "green"
       }
     };
     
@@ -144,10 +144,21 @@ function tenYearChart() {
       },
       showlegend: false,
       xaxis: {
-        xlabel: "Month",
+        title: {
+          text: "Month",
+          font: {
+            family: 'Calibri, sans-serif',
+          }
+        },
         tickangle: 0
       },
       yaxis: {
+        title: {
+          text: "Wealth Created ($)",
+          font: {
+            family: 'Calibri, sans-serif',
+          }
+        },
         zeroline: true,
         gridwidth: 0
       },
@@ -164,5 +175,5 @@ function tenYearChart() {
 
 amortizationSchedule();
 equityChart();
-tenYearChart();
+yearlyChart();
    
