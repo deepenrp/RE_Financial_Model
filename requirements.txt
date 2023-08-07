@@ -1,6 +1,9 @@
+anaconda-client==1.7.2
+anaconda-project==0.8.3
 certifi==2023.7.22
 click==8.1.6
 Flask==2.3.2
+Flask-PyMongo==2.3.0
 Flask-SQLAlchemy==3.0.5
 ipython==8.14.0
 ipython-genutils==0.2.0
