@@ -16,7 +16,7 @@ passlib==1.7.4
 pexpect==4.8.0
 pickleshare==0.7.5
 prompt-toolkit==3.0.39
-psycopg2==3.1.10
+psycopg2==2.9.7
 ptyprocess==0.7.0
 Pygments==2.16.1
 simplegeneric==0.8.1
