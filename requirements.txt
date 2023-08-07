@@ -26,4 +26,4 @@ six==1.16.0
 SQLAlchemy==2.0.19
 wcwidth==0.2.6
 Werkzeug==2.3.6
-wincertstore==0.2.1
+wincertstore==0.2
