@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn re-financial-model.wsgi --log-file -
