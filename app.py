@@ -2,6 +2,7 @@ import os
 
 import pandas as pd
 import numpy as np
+import numpy_financial as npf
 import math
 
 import datetime as dt
@@ -40,7 +41,7 @@ loan_amount = round((purchase_price * ltv), 2)
 interest_rate = 3.75 / 100
 term_annual = 30
 no_of_months = term_annual * 12
-monthly_p_i = round((-1 * np.pmt(interest_rate / 12, no_of_months, loan_amount)), 2)
+monthly_p_i = round((-1 * npf.pmt(interest_rate / 12, no_of_months, loan_amount)), 2)
 additional_principal = 0
 
 pitia = monthly_p_i + property_tax_monthly + homeowners_insurance_monthly + homeowners_insurance_monthly
@@ -77,10 +78,10 @@ inflation = 1.81 / 100
 per = 1
 
 # Calculate the interest payment
-ipmt = np.ipmt(interest_rate / 12, per, no_of_months, loan_amount)
+ipmt = npf.ipmt(interest_rate / 12, per, no_of_months, loan_amount)
 
 # Calculate the principal payment
-ppmt = np.ppmt(interest_rate / 12, per, no_of_months, loan_amount)
+ppmt = npf.ppmt(interest_rate / 12, per, no_of_months, loan_amount)
 
 # build a DateTimeIndex Range for the next 30 years based on MS (Month Start)
 rng = pd.date_range(month_start, periods=term_annual * 12, freq='MS')
@@ -107,9 +108,9 @@ for x in periods:
 amortization_schedule_df["year"] = year
 
 # Payment, Principal, Interest
-amortization_schedule_df["payment"] = np.pmt(interest_rate/12, term_annual*12, loan_amount)
-amortization_schedule_df["principal"] = np.ppmt(interest_rate/12, amortization_schedule_df.index, term_annual*12, loan_amount)
-amortization_schedule_df["interest"] = np.ipmt(interest_rate/12, amortization_schedule_df.index, term_annual*12, loan_amount)
+amortization_schedule_df["payment"] = npf.pmt(interest_rate/12, term_annual*12, loan_amount)
+amortization_schedule_df["principal"] = npf.ppmt(interest_rate/12, amortization_schedule_df.index, term_annual*12, loan_amount)
+amortization_schedule_df["interest"] = npf.ipmt(interest_rate/12, amortization_schedule_df.index, term_annual*12, loan_amount)
 
 # Additional Principal. Convert to a negative value in order to keep the signs the same
 amortization_schedule_df["additional_principal"] = -additional_principal
