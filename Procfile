@@ -1,1 +1,1 @@
-web: gunicorn re-financial-model.wsgi --log-file -
+web: gunicorn app:app --preload
