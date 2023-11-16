@@ -9,9 +9,7 @@ import datetime as dt
 from datetime import datetime, date, time, timedelta
 from dateutil.relativedelta import relativedelta
 
-from flask import Flask, jsonify, render_template, request
-import json
-import plotly
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -28,12 +26,13 @@ def RE_Financial_Model(form):
     # Purchase Details (Input:- Purchase Price, HOA Fees, Property Taxes, Homeowner's Insurance, Purchase Date)
 
     purchase_price = int(request.form['purchasePrice'])
-    print(purchase_price)
+    print("Purchase Price:- " , purchase_price)
     hoa_fees = 0
-    property_taxes = 10307.00
+    property_taxes = int(request.form['propertyTax'])
+    print("Property Taxes:- " , property_taxes)
     property_tax_monthly = round((property_taxes / 12), 2)
     property_tax_rate = property_taxes / purchase_price
-    homeowners_insurance_annual = 900
+    homeowners_insurance_annual = int(request.form['homeownersIns'])
     homeowners_insurance_monthly = homeowners_insurance_annual / 12
     purchase_date = datetime.strptime("2024-01-01", "%Y-%m-%d")
     month_start = datetime(purchase_date.year, purchase_date.month + 2, 1)
@@ -41,13 +40,13 @@ def RE_Financial_Model(form):
     # Loan Details (Input Loan Type, LTV, Interest Rate, Term, Additional Principal)
     loan_type = "Conventional"
     ltv = float(request.form['ltv']) / 100
-    print(ltv)
+    print("LTV:- " , ltv)
     downpayment = round((purchase_price * (1 - ltv)), 2)
     loan_amount = round((purchase_price * ltv), 2)
     interest_rate = float(request.form['interestRate']) / 100
-    print(interest_rate)
+    print("Interest Rate:-" , interest_rate)
     term_annual = int(request.form['term'])
-    print(term_annual)
+    print("Term Annual:-" , term_annual)
     no_of_months = term_annual * 12
     monthly_p_i = round((-1 * npf.pmt(interest_rate / 12, no_of_months, loan_amount)), 2)
     additional_principal = 0
@@ -73,12 +72,12 @@ def RE_Financial_Model(form):
     current_address = "321 Niam Ave, East Brunswick, NJ 08340"
     own_or_rent = "Rent"
     current_housing_payment = int(request.form['rent'])
-    print(current_housing_payment)
+    print("Rent:-" , current_housing_payment)
     credit_score = 720
 
     # Appreciation Forecast (According to past 5-Yr NJ HPI)
     appreciation_rate = float(request.form['appreciation'])
-    print(appreciation_rate)
+    print("Home Appreciation Rate:-" , appreciation_rate)
 
     # Resale Scenario (Input All)
     agent_commission = 5 / 100
@@ -339,4 +338,5 @@ def results():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)

@@ -4,15 +4,15 @@ var schedule_data = schedule_dict;
 function amortizationSchedule() {
 
   data = schedule_data
-  var parseTime = d3.timeParse("%Y");
+
   var payment_date = data.payment_date;
   var ending_balance = data.ending_balance;
   var cumulative_principal = data.cumulative_principal.map(function(x) { return x * -1; });
   var cumulative_interest = data.cumulative_interest.map(function(x) { return x * -1; });
-  console.log(payment_date);
-  console.log(cumulative_interest);
-  console.log(cumulative_principal);
-  console.log(ending_balance);
+  // console.log(payment_date);
+  // console.log(cumulative_interest);
+  // console.log(cumulative_principal);
+  // console.log(ending_balance);
 
   var trace1 = {
       x: payment_date,
@@ -112,8 +112,6 @@ function tenYearChart() {
 
   var months = data.month;
   var wealth_created = data.wealth_created;
-
-  console.log(months);
 
   var trace1 = {
     x: months,
