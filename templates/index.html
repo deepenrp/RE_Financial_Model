@@ -31,41 +31,50 @@
         </br>
           <u><center>Equity Through Amortization, Housing Appreciation, and Tax Benefits.</center></u></h5>
     </div>
-
+    </br>
+      <h6>
+        Use this Tool to determine the potential wealth created via Owning real estate versus Renting. Enter your scenario below and click Submit to see the Results. 
+        There are certain assumptions that are made such as having no HOA Fees for the property. The loan is a Conventional Loan and regardless of the LTV entered below,
+        there is no Mortgage Insurance. The loan also have no lenders or sellers credits. Prepaids are calculated as 3 times monthly property tax plus monthly homeowners insurance. 
+        Same with escrows. Rent appreciation is not factored into the calculations. An Excel model is also included on github of this project that may provide more details than this website.
+      </h6>
     </br>
     <hr>
 
+    <h5><u>Enter Inputs Here</u></h5>
+    </br>
+
     <form name="inputData" action="{{ url_for('results') }}" method="post">
       <div class="form-group">
-        <label for="purchasePrice">Purchase Price</label>
+        <label for="purchasePrice"><strong>Purchase Price :-</strong></label>
         <input type="number" class="form-control" name="purchasePrice" placeholder="Enter Purchase Price">
       </div>
       <div class="form-group">
-        <label for="ltv">Loan-To-Value (%)</label>
+        <label for="ltv"><strong>Loan-To-Value (%) :- </strong>(Note: Mortgage Insurance is not factored into this model if LTV entered is higher than 80% And/Or if Loan is Not a Conventional Loan):-</label>
         <input type="number" class="form-control" name="ltv" placeholder="Enter Loan-To-Value (%)">
       </div>
       <div class="form-group">
-        <label for="term">Loan Terms (Yrs)</label>
+        <label for="term"><strong>Loan Terms (Yrs) :-</strong></label>
         <input type="number" class="form-control" name="term" placeholder="Enter Term in Years">
       </div>
       <div class="form-group">
-        <label for="interestRate">Interest Rate (%)</label>
+        <label for="interestRate"><strong>Interest Rate (%) :-</strong></label>
         <input type="number" step="0.125" class="form-control" name="interestRate" placeholder="Enter Interest Rate (%)">
       </div>
       <div class="form-group">
-        <label for="propertyTax">Estimated Property Taxes</label>
+        <label for="propertyTax"><strong>Estimated Property Taxes :-</strong></label>
         <input type="number" class="form-control" name="propertyTax" placeholder="Enter Estimated Property Taxes ($)">
       </div>
       <div class="form-group">
-        <label for="homeownersIns">Estimated Homwowners Insurance</label>
+        <label for="homeownersIns"><strong>Estimated Homwowners Insurance :-</strong></label>
         <input type="number" class="form-control" name="homeownersIns" placeholder="Enter Estimated Homeowners Insurance ($)">
       </div>
       <div class="form-group">
-        <label for="rent">Equivalent or Current Rent</label>
+        <label for="rent"><strong>Equivalent or Current Rent :-</strong></label>
         <input type="number" class="form-control" name="rent" placeholder="Enter Equivalent or Current Rent">
       </div>
       <div class="form-group">
-        <label for="appreciation">Estimated Home Appreciation (%)</label>
+        <label for="appreciation"><strong>Estimated Home Appreciation (%) :-</strong></label>
         <input type="number" step="0.01" class="form-control" name="appreciation" placeholder="Enter Estimated Home Appreciation">
       </div>
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
