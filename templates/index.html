@@ -54,23 +54,28 @@
         <input type="number" class="form-control" name="ltv" placeholder="Enter Loan-To-Value (%)">
       </div>
       <div class="form-group">
-        <label for="term"><strong>Loan Terms (Yrs) :-</strong></label>
-        <input type="number" class="form-control" name="term" placeholder="Enter Term in Years">
+        <p><strong>Loan Terms (Yrs) :-</strong></p>
+        <input type="radio"  name="term" value="15">
+        <label for="term">15 Years</label><br>
+        <input type="radio" name="term" value="20">
+        <label for="term">20 Years</label><br>  
+        <input type="radio" name="term" value="30">
+        <label for="term">30 Years</label><br>
       </div>
       <div class="form-group">
         <label for="interestRate"><strong>Interest Rate (%) :-</strong></label>
         <input type="number" step="0.125" class="form-control" name="interestRate" placeholder="Enter Interest Rate (%)">
       </div>
       <div class="form-group">
-        <label for="propertyTax"><strong>Estimated Property Taxes :-</strong></label>
+        <label for="propertyTax"><strong>Estimated Annual Property Taxes :-</strong></label>
         <input type="number" class="form-control" name="propertyTax" placeholder="Enter Estimated Property Taxes ($)">
       </div>
       <div class="form-group">
-        <label for="homeownersIns"><strong>Estimated Homwowners Insurance :-</strong></label>
+        <label for="homeownersIns"><strong>Estimated Annual Homwowners Insurance :-</strong></label>
         <input type="number" class="form-control" name="homeownersIns" placeholder="Enter Estimated Homeowners Insurance ($)">
       </div>
       <div class="form-group">
-        <label for="rent"><strong>Equivalent or Current Rent :-</strong></label>
+        <label for="rent"><strong>Equivalent or Current Monthly Rent :-</strong></label>
         <input type="number" class="form-control" name="rent" placeholder="Enter Equivalent or Current Rent">
       </div>
       <div class="form-group">
@@ -151,7 +156,7 @@
   </br>
 
 <div id="footer">
-  <p>Deepen Patel &copy; 2023</p>
+  <p>Deepen Patel &copy; 2024</p>
 </div>
 
 <hr>
